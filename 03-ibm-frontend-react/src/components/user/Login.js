@@ -31,7 +31,7 @@ const Login = () => {
                     setLoginData({ username: '', password: '' });
                     dispatch(userLogin(response));
                     navigate('/profile');
-                });
+                }, 2000);
             })
             .catch((error) => {
                 console.log(error);
@@ -41,21 +41,23 @@ const Login = () => {
     };
 
     return (
-        <>
-            <h1>Login Component</h1>
-            <p>Login here</p>
-            <form onSubmit={handleLoginSubmit}>
-                <input type="text" name="username" value={loginData.username}
-                    onChange={handleChange} autoFocus required />
-                <br />
-                <input type="password" name="password" value={loginData.password}
-                    onChange={handleChange} required />
-                <br />
-                <input type="submit" value="Login" />
-            </form>
+        <div className="container mt-3">
+            <h1 className="display-4" >Login Component</h1>
+            <p className="lead">Login here</p>
+            <div className="col-4">
+                <form className="form form-group mx-2 py-2 my-2 py-2" onSubmit={handleLoginSubmit}>
+                    <input className="form-control" type="text" name="username" value={loginData.username} placeholder="username"
+                        onChange={handleChange} autoFocus required />
+                    <br />
+                    <input className="form-control" type="password" name="password" value={loginData.password} placeholder="password"
+                        onChange={handleChange} required />
+                    <br />
+                    <input  className="form-control btn btn-outline-light" type="submit" value="Login" />
+                </form>
+            </div>
             {afterSubmit && <p>{afterSubmit}</p>}
             <p>Not yet registered? <Link to={'/register'}>Register</Link> </p>
-        </>
+        </div>
     );
 };
 export default Login;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addEmployee } from "../redux/UserSlice"; 
+import { addEmployee } from "../redux/EmpSlice"; 
 import UserService from "../services/UserService";
 
 const AddEmployee = () => {

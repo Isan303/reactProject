@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { findEmployeeByName } from "../redux/UserSlice"; 
+import { findEmployeeByName } from "../redux/EmpSlice"; 
 import UserService from "../services/UserService";
 
 const FindEmployeeByName = () => {

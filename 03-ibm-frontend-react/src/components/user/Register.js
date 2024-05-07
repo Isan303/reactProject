@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import UserService from "../../services/UserService";
 import { useDispatch } from "react-redux";
 import { userRegister } from "../../redux/UserSlice";
+// import { checkUserExists } from '../../../services/user.service'; 
 
 const Register = () => {
 
@@ -20,9 +21,12 @@ const Register = () => {
         });
     };
 
+   
+
     const handleRegisterSubmit = async (evt) => {
         evt.preventDefault();
         console.log(registerData);
+       
         UserService.registerUser(registerData)
             .then((response) => {
                 console.log(response);
@@ -35,30 +39,36 @@ const Register = () => {
             })
             .catch((error) => {
                 console.log(error);
-                setAfterRegisterMessage(`Invalid credentials!`);
+                
+                    setAfterRegisterMessage(`Registration failed! user already exists.`);
+                
+                //setAfterRegisterMessage(`Invalid credentials!`);
             });
+    
 
     };
 
     return (
-        <>
-            <h1>Register Component</h1>
-            <p>Register here</p>
-            <form onSubmit={handleRegisterSubmit}>
-                <input type="text" name="username" value={registerData.username}
+        <div className="container mt-3">
+            <h1 className="display-4">Register Component</h1>
+            <p className="lead">Register here</p>
+            <div className="col-4">
+            <form className="form form-group mx-2 py-2 my-2 py-2" onSubmit={handleRegisterSubmit}>
+                <input className="form-control" type="text" name="username" value={registerData.username} placeholder="username"
                     onChange={handleChange} autoFocus required />
                 <br />
-                <input type="password" name="password" value={registerData.password}
+                <input className="form-control" type="password" name="password" value={registerData.password} placeholder="password"
                     onChange={handleChange} required />
                 <br />
-                <input type="submit" value="Register" />
+                <input  className="form-control btn btn-outline-light" type="submit"  value="Register" />
             </form>
             <>
                 <p>{afterRegisterMessage && afterRegisterMessage} </p>
             </>
             <p>Already registered? <Link to={'/login'}>Login</Link> </p>
+            </div>
 
-        </>
+        </div>
     );
 };
 export default Register;

@@ -2,13 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 import UpdateProfile from "./UpdateProfile";
 
-
 const Profile = () => {
     const userData = useSelector((state) => state.user.loggedInUser);
 
     return (
         <>
             <h1>User Profile</h1>
+            
             {userData && (
                 <div>
                     <p>Username: {userData.username}</p>
@@ -20,7 +20,6 @@ const Profile = () => {
                 </div>
             )}
             <UpdateProfile />
-            
         </>
     );
 };

@@ -2,8 +2,6 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-
-
 const UserSlice = createSlice({
     name: 'user',
     initialState: {
@@ -33,11 +31,9 @@ const UserSlice = createSlice({
             console.log(action.payload);
             state.loggedInUser = '';
             state.loginStatus = false;
-        },
-
-    
-        
-    }});
+        }
+    }
+});
 
 export default UserSlice.reducer;
 
